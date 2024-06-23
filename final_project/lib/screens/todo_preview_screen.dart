@@ -1,23 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practice6/screens/to_do_screen.dart';
 
-ButtonStyle _buttonStyleForToDoPrev() {
-  return TextButton.styleFrom(
-    surfaceTintColor: Colors.pinkAccent.shade200,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.zero,
-    ),
-  );
-}
-
-TextStyle _textStyleForToDoPrev() {
-  return TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.bold,
-    color: Colors.black.withOpacity(0.9),
-  );
-}
-
 List<String> ButtonType = ['button1', 'button2', 'button3', 'button4'];
 
 class ToDoCategory extends StatelessWidget {
@@ -138,4 +121,21 @@ class ToDoCategory extends StatelessWidget {
       ),
     );
   }
+}
+
+ButtonStyle _buttonStyleForToDoPrev() {
+  return TextButton.styleFrom(
+    surfaceTintColor: Colors.pinkAccent.shade200,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.zero,
+    ),
+  );
+}
+
+TextStyle _textStyleForToDoPrev() {
+  return TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    color: Colors.black.withOpacity(0.9),
+  );
 }

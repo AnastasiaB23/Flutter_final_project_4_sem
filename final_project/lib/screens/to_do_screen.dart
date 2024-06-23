@@ -13,8 +13,10 @@ class ToDoScreen extends StatefulWidget {
 }
 
 class _ToDoScreenState extends State<ToDoScreen> {
-  final _todoController = TextEditingController();
   String buttype = '';
+  late List<String> currentTodos;
+  late String categoryName;
+  late Color backColor;
 
   late SharedPreferencesService service;
 
@@ -32,28 +34,27 @@ class _ToDoScreenState extends State<ToDoScreen> {
 
   Future<void> _loadTodosForButton(String buttonType) async {
     final todos = await service.getTodo(buttonType);
-    List<String> reversed_todos = todos;
-        // .reversed.toList();
     switch (buttonType) {
       case 'button1':
         setState(() {
-          todos_button1 = reversed_todos;
+          todos_button1 = todos;
         });
       case 'button2':
         setState(() {
-          todos_button2 = reversed_todos;
+          todos_button2 = todos;
         });
       case 'button3':
         setState(() {
-          todos_button3 = reversed_todos;
+          todos_button3 = todos;
         });
       case 'button4':
         setState(() {
-          todos_button4 = reversed_todos;
+          todos_button4 = todos;
         });
       default:
         return Future.error(buttonType);
     }
+    setState(() {});
   }
 
   Future<void> _initSharedPreferences() async {
@@ -82,73 +83,46 @@ class _ToDoScreenState extends State<ToDoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> currentTodos = [];
-
     switch (buttype) {
       case 'button1':
         currentTodos = todos_button1;
+        categoryName = '1. Срочное и важное';
+        backColor = Colors.deepOrangeAccent;
         print('got current todos');
       case 'button2':
         currentTodos = todos_button2;
-
+        categoryName = '2. Не срочное и важное';
+        backColor = Colors.green;
       case 'button3':
         currentTodos = todos_button3;
-
+        categoryName = '3. Срочное и не важное';
+        backColor =Colors.yellow;
       case 'button4':
         currentTodos = todos_button4;
-
+        categoryName = '4. Не срочное и не важное';
+        backColor = Colors.blueAccent;
       default:
         currentTodos = [];
-        print('i am here(');
     }
-    int ind;
-    String title;
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+
         elevation: 0,
         title: Container(
           width: MediaQuery.of(context).size.width,
           height: 40,
           decoration: BoxDecoration(
-            color: Colors.indigo.shade50,
-            borderRadius: BorderRadius.circular(20),
+            // color: Colors.white,
           ),
-          child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            const Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(
-                Icons.search,
-                color: Colors.indigo,
-                size: 20,
-              ),
-            ),
-            Expanded(
-              child: TextField(
-                textInputAction: TextInputAction.search,
-                maxLines: 1,
-                controller: _todoController,
-                keyboardType: TextInputType.text,
-                textAlignVertical: TextAlignVertical.center,
-                // onChanged: (value) => _runFilter(value),
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Поиск',
-                  hintStyle: TextStyle(color: Colors.blueGrey),
-                  contentPadding: EdgeInsets.only(left: 0, bottom: 2),
-                  focusedBorder: InputBorder.none,
-                  filled: true,
-                  isDense: true,
-                  fillColor: Colors.transparent,
-                ),
-                style: const TextStyle(
-                  fontSize: 14,
-                ),
-                obscureText: false,
-              ),
-            )
-          ]),
+          child: Text(
+            categoryName,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                backgroundColor: backColor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
+          ),
         ),
       ),
       body: SizedBox(
@@ -156,12 +130,15 @@ class _ToDoScreenState extends State<ToDoScreen> {
         child: ListView.builder(
             itemCount: currentTodos.length,
             itemBuilder: (context, index) {
-              return
-                GestureDetector(
-                  onTap: (){
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => AddTodoScreen(buttonName: buttype, title: currentTodos[index], index: index)));
-                  },
-                  child: Container(
+              return GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => AddTodoScreen(
+                          buttonName: buttype,
+                          title: currentTodos[index],
+                          index: index)));
+                },
+                child: Container(
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
@@ -180,20 +157,14 @@ class _ToDoScreenState extends State<ToDoScreen> {
                     Expanded(
                       child: Row(
                         children: [
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          const Icon(
-                            Icons.check_box_outlined,
-                            color: Colors.indigo,
-                            size: 20,
-                          ),
-                          const SizedBox(
+                          SizedBox(
                             width: 10,
                           ),
                           Expanded(
-                            child: Text(currentTodos[index],
-                                overflow: TextOverflow.ellipsis),
+                            child: Text(
+                              currentTodos[index],
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                         ],
                       ),
@@ -206,7 +177,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                             currentTodos.removeAt(index);
                             // print('worked');
                           });
-                  
+
                           final prefs = await SharedPreferences.getInstance();
                           print(currentTodos);
                           await prefs.setStringList(
@@ -219,17 +190,16 @@ class _ToDoScreenState extends State<ToDoScreen> {
                       ),
                     )
                   ]),
-                  
-                                ),
-                );
-
+                ),
+              );
             }),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
-              builder: (context) => AddTodoScreen(buttonName: buttype, title: '', index: 0),
+              builder: (context) =>
+                  AddTodoScreen(buttonName: buttype, title: '', index: 0),
             ),
           );
         },
