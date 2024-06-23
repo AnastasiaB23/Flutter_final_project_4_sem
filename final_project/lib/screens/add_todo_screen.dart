@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:practice6/screens/to_do_screen.dart';
+import 'package:practice6/shared_preferences_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AddTodoScreen extends StatefulWidget {
   final String buttonName;
 
-  const AddTodoScreen({Key? key, required this.buttonName}) : super(key: key);
+  const AddTodoScreen({Key? key, required this.buttonName, required this.title, required this.index}) : super(key: key);
 
+  final String? title;
+  final int index;
   @override
   State<AddTodoScreen> createState() => _AddTodoScreenState();
 }
@@ -14,9 +17,12 @@ class AddTodoScreen extends StatefulWidget {
 class _AddTodoScreenState extends State<AddTodoScreen> {
   TextEditingController controller = TextEditingController();
   late String buttonName;
+  late int index;
 
   @override
   void initState() {
+    index = widget.index;
+    controller = TextEditingController(text: widget.title);
     super.initState();
     buttonName = widget.buttonName;
   }
@@ -52,11 +58,21 @@ class _AddTodoScreenState extends State<AddTodoScreen> {
                 if (controller.text.isNotEmpty) {
                   final prefs = await SharedPreferences.getInstance();
                   String key = 'todos_$buttonName';
+                  if (widget.title?.isEmpty ?? false){
+                    await prefs.setStringList(
+                        key,
+                        (prefs.getStringList(key) ?? [])
+                            .followedBy([controller.text]).toList()
+                    );
+                  }
+                  else{
+                    final result = prefs.getStringList(key);
+                        // ?.reversed.toList();
+                    result?.removeAt(index);
+                    result?.insert(index, controller.text);
+                    await prefs.setStringList(key, result ?? []);
+                  }
 
-                  await prefs.setStringList(
-                      key,
-                      (prefs.getStringList(key) ?? [])
-                          .followedBy([controller.text]).toList());
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(

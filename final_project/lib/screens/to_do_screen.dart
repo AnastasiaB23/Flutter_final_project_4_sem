@@ -32,7 +32,8 @@ class _ToDoScreenState extends State<ToDoScreen> {
 
   Future<void> _loadTodosForButton(String buttonType) async {
     final todos = await service.getTodo(buttonType);
-    List<String> reversed_todos = todos.reversed.toList();
+    List<String> reversed_todos = todos;
+        // .reversed.toList();
     switch (buttonType) {
       case 'button1':
         setState(() {
@@ -100,6 +101,8 @@ class _ToDoScreenState extends State<ToDoScreen> {
         currentTodos = [];
         print('i am here(');
     }
+    int ind;
+    String title;
 
     return Scaffold(
       appBar: AppBar(
@@ -153,72 +156,80 @@ class _ToDoScreenState extends State<ToDoScreen> {
         child: ListView.builder(
             itemCount: currentTodos.length,
             itemBuilder: (context, index) {
-              return Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      width: 1,
-                      color: Colors.indigo,
-                    )),
-                margin: const EdgeInsets.only(
-                  top: 10,
-                  left: 20,
-                  right: 20,
-                  bottom: 10,
-                ),
-                height: 60,
-                child: Row(children: [
-                  Expanded(
-                    child: Row(
-                      children: [
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        const Icon(
-                          Icons.check_box_outlined,
-                          color: Colors.indigo,
-                          size: 20,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Expanded(
-                          child: Text(currentTodos[index],
-                              overflow: TextOverflow.ellipsis),
-                        ),
-                      ],
-                    ),
+              return
+                GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => AddTodoScreen(buttonName: buttype, title: currentTodos[index], index: index)));
+                  },
+                  child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        width: 1,
+                        color: Colors.indigo,
+                      )),
+                  margin: const EdgeInsets.only(
+                    top: 10,
+                    left: 20,
+                    right: 20,
+                    bottom: 10,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () async {
-                        setState(() {
-                          currentTodos.removeAt(index);
-                          // print('worked');
-                        });
-
-                        final prefs = await SharedPreferences.getInstance();
-                        print(currentTodos);
-                        await prefs.setStringList(
-                            'todos_$buttype', currentTodos);
-                      },
-                      child: Icon(
-                        Icons.delete,
-                        color: Colors.red,
+                  height: 60,
+                  child: Row(children: [
+                    Expanded(
+                      child: Row(
+                        children: [
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          const Icon(
+                            Icons.check_box_outlined,
+                            color: Colors.indigo,
+                            size: 20,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                            child: Text(currentTodos[index],
+                                overflow: TextOverflow.ellipsis),
+                          ),
+                        ],
                       ),
                     ),
-                  )
-                ]),
-              );
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: () async {
+                          setState(() {
+                            currentTodos.removeAt(index);
+                            // print('worked');
+                          });
+                  
+                          final prefs = await SharedPreferences.getInstance();
+                          print(currentTodos);
+                          await prefs.setStringList(
+                              'todos_$buttype', currentTodos);
+                        },
+                        child: Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
+                      ),
+                    )
+                  ]),
+                  
+                                ),
+                );
+
             }),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
-              builder: (context) => AddTodoScreen(buttonName: buttype),
+              builder: (context) => AddTodoScreen(buttonName: buttype, title: '', index: 0),
             ),
           );
         },

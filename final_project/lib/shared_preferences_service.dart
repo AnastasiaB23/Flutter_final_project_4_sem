@@ -20,7 +20,9 @@ class SharedPreferencesService {
 
   Future<List<String>> getTodo(String key) async {
     print('4');
+    // final prefer =
     return sharedPreferences.getStringList('todos_$key') ?? [];
+      // prefer.reversed.toList();
   }
   // Future<void> removeTodo(int index, String key) async{
   //   final result = sharedPreferences.getStringList(key);
@@ -28,11 +30,16 @@ class SharedPreferencesService {
   //   await sharedPreferences.setStringList(key, result?? []);
   // }
 
+  Future<void> updateTodo (String key, int index, String value) async{
+    final result = sharedPreferences.getStringList(key);
+    result?.removeAt(index);
+    result?.insert(index, value);
+    await sharedPreferences.setStringList(key, result ?? []);
+  }
 
-
-  Future<void> removeTodo(int index, String key) async{
-      final result = sharedPreferences.getStringList(key);
-      result?.removeAt(index);
-      await sharedPreferences.setStringList(key, result?? []);
-    }
+  // Future<void> removeTodo(int index, String key) async{
+  //     final result = sharedPreferences.getStringList(key);
+  //     result?.removeAt(index);
+  //     await sharedPreferences.setStringList(key, result?? []);
+  //   }
 }
