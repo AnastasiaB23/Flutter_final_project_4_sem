@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:practice6/screens/weather_screen.dart';
 import 'package:practice6/shared_preferences_service.dart';
 import 'package:provider/provider.dart';
 
@@ -224,9 +225,9 @@ class _EntryScreenState extends State<EntryScreen> {
             TextButton(
                 style: _buttonStyle(),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> MyGoals()),); // CHANGE LATER!
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> WeatherPage()),); // CHANGE LATER!
                 },
-                child: Text('Мои цели', style: _textStyle()
+                child: Text('Мой спорт', style: _textStyle()
                 )
             ),
           ),

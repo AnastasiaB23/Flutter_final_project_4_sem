@@ -97,6 +97,7 @@ class MyApp extends StatelessWidget {
     //   color: Colors.green,
     // child:
       MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Погнали!',
         theme: ThemeData(
           primarySwatch: Colors.orange,
