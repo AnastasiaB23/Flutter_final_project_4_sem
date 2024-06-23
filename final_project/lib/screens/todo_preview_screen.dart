@@ -3,9 +3,8 @@ import 'package:practice6/entryscreen.dart';
 import 'package:practice6/screens/to_do_screen.dart';
 import 'first_screen.dart';
 import '/model/todo.dart';
-
-
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'to_do_screen.dart';
 
 ButtonStyle _buttonStyleForToDoPrev(){
   return TextButton.styleFrom(
@@ -26,13 +25,16 @@ TextStyle _textStyleForToDoPrev(){
 
 
 
-
+List<String> ButtonType = ['button1', 'button2', 'button3', 'button4'];
 
 class ToDoCategory extends StatelessWidget{
+
+
   ToDoCategory({super.key});
-  ToDoScreen toDoScreen1 = ToDoScreen(id: 0,);
-  ToDoScreen toDoScreen2 = ToDoScreen(id: 1,);
+  // ToDoScreen toDoScreen1 = ToDoScreen(id: 0,);
+  // ToDoScreen toDoScreen2 = ToDoScreen(id: 1,);
   // EntryScreen entryScreen = EntryScreen();
+
 
   String _categoryName(int categoryId){
     switch(categoryId){
@@ -68,7 +70,7 @@ class ToDoCategory extends StatelessWidget{
                   TextButton(
                       style: _buttonStyleForToDoPrev(),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> toDoScreen1),);
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ToDoScreen(buttonName: ButtonType[0],)),);
                         // CHANGE LATER!
                       },
                       child: Text(_categoryName(1), style: _textStyleForToDoPrev(),
@@ -83,7 +85,7 @@ class ToDoCategory extends StatelessWidget{
                     TextButton(
                         style: _buttonStyleForToDoPrev(),
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> toDoScreen2),);
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> ToDoScreen(buttonName: ButtonType[1],)),);
                           // CHANGE LATER!
                         },
                         child: Text(_categoryName(2), style: _textStyleForToDoPrev(),
@@ -104,7 +106,7 @@ class ToDoCategory extends StatelessWidget{
                   TextButton(
                       style: _buttonStyleForToDoPrev(),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> MyGoals()),);
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ToDoScreen(buttonName: ButtonType[2],)),);
                         // CHANGE LATER!
                       },
                       child: Text(_categoryName(3), style: _textStyleForToDoPrev(),
@@ -119,7 +121,7 @@ class ToDoCategory extends StatelessWidget{
                   TextButton(
                       style: _buttonStyleForToDoPrev(),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> MyGoals()),);
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ToDoScreen(buttonName: ButtonType[3],)),);
                         // CHANGE LATER!
                       },
                       child: Text(_categoryName(4), style: _textStyleForToDoPrev(),
@@ -128,26 +130,26 @@ class ToDoCategory extends StatelessWidget{
               )
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                  color: Colors.lightGreen,
-                  width: 350,
-                  height: 100,
-                  child:
-                  TextButton(
-                      style: _buttonStyleForToDoPrev(),
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> MyGoals()),);
-                        // CHANGE LATER!
-                      },
-                      child: Text(_categoryName(0), style: _textStyleForToDoPrev(),
-                      )
-                  )
-              ),
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //   children: [
+          //     Container(
+          //         color: Colors.lightGreen,
+          //         width: 350,
+          //         height: 100,
+          //         child:
+          //         TextButton(
+          //             style: _buttonStyleForToDoPrev(),
+          //             onPressed: () {
+          //               Navigator.push(context, MaterialPageRoute(builder: (context)=> MyGoals()),);
+          //               // CHANGE LATER!
+          //             },
+          //             child: Text(_categoryName(0), style: _textStyleForToDoPrev(),
+          //             )
+          //         )
+          //     ),
+          //   ],
+          // ),
       ],
       ),
 

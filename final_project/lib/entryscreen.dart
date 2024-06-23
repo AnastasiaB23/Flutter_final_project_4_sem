@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:practice6/shared_preferences_service.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
 import 'package:practice6/screens/todo_preview_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'screens/first_screen.dart';
 
@@ -101,6 +103,8 @@ TextStyle _textStyle(){
 //   }
 // }
 class _EntryScreenState extends State<EntryScreen> {
+
+
   @override
   Widget build(BuildContext context) {
     return entryScreen();
