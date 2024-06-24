@@ -69,16 +69,42 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(_weather?.cityName ?? "loading city.."),
-            Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
-            Text('${_weather?.temperature.round()}°C'),
-            Text(_weather?.mainCondition ?? ""),
-          ],
-        ),
+      appBar: AppBar(
+        elevation: 0,
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.location_on,
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 40,
+            decoration: BoxDecoration(),
+            child: Text(
+              _weather?.cityName ?? "loading city..",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
+                Text(
+                  '${_weather?.temperature.round()}°C',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  _weather?.mainCondition ?? "",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:practice6/screens/to_do_screen.dart';
 
@@ -32,9 +34,11 @@ class ToDoCategory extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                  color: Colors.deepOrangeAccent,
-                  width: 150,
-                  height: 150,
+                  width: MediaQuery.of(context).size.width / 2.5,
+                  height: MediaQuery.of(context).size.height / 2.5,
+                  decoration: BoxDecoration(
+                      color: Colors.deepOrangeAccent,
+                      borderRadius: BorderRadius.circular(25)),
                   child: TextButton(
                       style: _buttonStyleForToDoPrev(),
                       onPressed: () {
@@ -45,16 +49,17 @@ class ToDoCategory extends StatelessWidget {
                                     buttonName: ButtonType[0],
                                   )),
                         );
-                        // CHANGE LATER!
                       },
                       child: Text(
                         _categoryName(1),
-                        style: _textStyleForToDoPrev(),
+                        style: _textStyleForToDoPrev(context),
                       ))),
               Container(
-                  color: Colors.green,
-                  width: 150,
-                  height: 150,
+                  width: MediaQuery.of(context).size.width / 2.5,
+                  height: MediaQuery.of(context).size.height / 2.5,
+                  decoration: BoxDecoration(
+                      color: Colors.yellow,
+                      borderRadius: BorderRadius.circular(25)),
                   child: TextButton(
                       style: _buttonStyleForToDoPrev(),
                       onPressed: () {
@@ -69,7 +74,7 @@ class ToDoCategory extends StatelessWidget {
                       },
                       child: Text(
                         _categoryName(2),
-                        style: _textStyleForToDoPrev(),
+                        style: _textStyleForToDoPrev(context),
                       )))
             ],
           ),
@@ -77,9 +82,13 @@ class ToDoCategory extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                  color: Colors.yellow,
-                  width: 150,
-                  height: 150,
+                  width: MediaQuery.of(context).size.width / 2.5,
+                  height: MediaQuery.of(context).size.height / 2.5,
+                  // width: 150,
+                  // height: 150,
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(25)),
                   child: TextButton(
                       style: _buttonStyleForToDoPrev(),
                       onPressed: () {
@@ -93,12 +102,16 @@ class ToDoCategory extends StatelessWidget {
                       },
                       child: Text(
                         _categoryName(3),
-                        style: _textStyleForToDoPrev(),
+                        style: _textStyleForToDoPrev(context),
                       ))),
               Container(
-                  color: Colors.blueAccent,
-                  width: 150,
-                  height: 150,
+                  width: MediaQuery.of(context).size.width / 2.5,
+                  height: MediaQuery.of(context).size.height / 2.5,
+                  // width: 150,
+                  // height: 150,
+                  decoration: BoxDecoration(
+                      color: Colors.blueAccent,
+                      borderRadius: BorderRadius.circular(25)),
                   child: TextButton(
                       style: _buttonStyleForToDoPrev(),
                       onPressed: () {
@@ -113,7 +126,7 @@ class ToDoCategory extends StatelessWidget {
                       },
                       child: Text(
                         _categoryName(4),
-                        style: _textStyleForToDoPrev(),
+                        style: _textStyleForToDoPrev(context),
                       )))
             ],
           ),
@@ -127,14 +140,14 @@ ButtonStyle _buttonStyleForToDoPrev() {
   return TextButton.styleFrom(
     surfaceTintColor: Colors.pinkAccent.shade200,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.zero,
+      borderRadius: BorderRadius.circular(20),
     ),
   );
 }
 
-TextStyle _textStyleForToDoPrev() {
+TextStyle _textStyleForToDoPrev(context) {
   return TextStyle(
-    fontSize: 20,
+    fontSize: MediaQuery.of(context).size.longestSide / 40,
     fontWeight: FontWeight.bold,
     color: Colors.black.withOpacity(0.9),
   );

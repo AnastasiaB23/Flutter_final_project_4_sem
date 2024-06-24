@@ -107,25 +107,26 @@ class _ToDoScreenState extends State<ToDoScreen> {
 
     return Scaffold(
       appBar: AppBar(
-
-        elevation: 0,
-        title: Container(
-          width: MediaQuery.of(context).size.width,
-          height: 40,
-          decoration: BoxDecoration(
-            // color: Colors.white,
-          ),
-          child: Text(
-            categoryName,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                backgroundColor: backColor,
-                fontSize: 20,
-                fontWeight: FontWeight.bold),
-          ),
-        ),
       ),
-      body: SizedBox(
+      body:
+      ListView(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 40,
+            decoration: BoxDecoration(
+            ),
+            child: Text(
+              categoryName,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  backgroundColor: backColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+
+      SizedBox(
         height: MediaQuery.of(context).size.height,
         child: ListView.builder(
             itemCount: currentTodos.length,
@@ -193,6 +194,8 @@ class _ToDoScreenState extends State<ToDoScreen> {
                 ),
               );
             }),
+      ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

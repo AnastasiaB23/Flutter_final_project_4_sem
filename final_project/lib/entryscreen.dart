@@ -9,7 +9,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'screens/first_screen.dart';
 
-
 // class EntryScreenModel with ChangeNotifier {
 //   Widget _currentWidgetIndex = StartMenu();
 //
@@ -21,25 +20,20 @@ import 'screens/first_screen.dart';
 //   }
 // }
 
-
-SizedBox _sizedBoxBetween({double height = 10}){
+SizedBox _sizedBoxBetween({double height = 10}) {
   return SizedBox(
     height: height,
-    );
+  );
 }
-
-
 
 class EntryScreen extends StatefulWidget {
   const EntryScreen({super.key});
 
   @override
   State<EntryScreen> createState() => _EntryScreenState();
-
-
 }
 
-ButtonStyle _buttonStyle(){
+ButtonStyle _buttonStyle() {
   return TextButton.styleFrom(
     surfaceTintColor: Colors.pinkAccent,
     shape: RoundedRectangleBorder(
@@ -48,14 +42,13 @@ ButtonStyle _buttonStyle(){
   );
 }
 
-TextStyle _textStyle(){
+TextStyle _textStyle(context) {
   return TextStyle(
-    fontSize: 30,
+    fontSize: MediaQuery.of(context).size.longestSide / 30,
     fontWeight: FontWeight.bold,
     color: Colors.black.withOpacity(0.9),
   );
 }
-
 
 // // Вторичный экран
 // class SecondaryScreen extends StatelessWidget {
@@ -104,206 +97,220 @@ TextStyle _textStyle(){
 //   }
 // }
 class _EntryScreenState extends State<EntryScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     return entryScreen();
 
-      // body: startMenu(),
-      // appBar: AppBar(
-      //   title: Text('Мой путь',
-      //   style: TextStyle(
-      //     fontSize: 40,
-      //     fontStyle: FontStyle.italic,
-      //   ),
-      //   ),
-      // ),
-      // body: ChangeNotifierProvider(
-      //   create: (context) => EntryScreenModel(),
-      //   child: Consumer<EntryScreenModel>(
-      //     builder: (context, model, child) {
-      //       return model._currentWidgetIndex;
-              // Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              // children: [
-              //   Text('Погнали!',
-              //     style: _textStyle(),),
-              //   // Кнопки для переключения виджетов
-              //   // Row(
-              //   //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   //   children: [
-              //   ElevatedButton(
-              //     onPressed: () => model.changeWidget(1),
-              //     child: Text("Начать"),
-              //   ),
-              //   ElevatedButton(
-              //     onPressed: () => model.changeWidget(2),
-              //     child: Text("Настройки"),
-              //   ),
-                // ],
-                // ),
-                // Вывод выбранного виджета
-                // Expanded(
-                //   child: IndexedStack(
-                //     index: model.currentWidgetIndex,
-                //     children: [
-                //       startMenu(),
-                //       entryScreen(),
-                //       settingsMenu(),
-                //     ],
-                //   ),
-                // ),
-            //   ],
-            // );
-      //     },
-      //   ),
-      // ),
-      // ChangeNotifierProvider(
-      //   create: (context) => EntryScreenModel(),
-      //   child: Consumer<EntryScreenModel>(
-      //     builder: (context, model, child) {
-      //       return Column(
-      //         children: [
-      //           // Кнопки для переключения виджетов
-      //           Row(
-      //             mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //             children: [
-      //               ElevatedButton(
-      //                 onPressed: () => model.changeWidget(0),
-      //                 child: Text("Виджет 1"),
-      //               ),
-      //               ElevatedButton(
-      //                 onPressed: () => model.changeWidget(1),
-      //                 child: Text("Виджет 2"),
-      //               ),
-      //             ],
-      //           ),
-      //           // Вывод выбранного виджета
-      //           Expanded(
-      //             child: IndexedStack(
-      //               index: model.currentWidgetIndex,
-      //               children: [
-      //                 startMenu(),
-      //                 entryScreen(),
-      //                 settingsMenu(),
-      //               ],
-      //             ),
-      //           ),
-      //         ],
-      //       );
-      //     },
-      //   ),
-      // ),
+    // body: startMenu(),
+    // appBar: AppBar(
+    //   title: Text('Мой путь',
+    //   style: TextStyle(
+    //     fontSize: 40,
+    //     fontStyle: FontStyle.italic,
+    //   ),
+    //   ),
+    // ),
+    // body: ChangeNotifierProvider(
+    //   create: (context) => EntryScreenModel(),
+    //   child: Consumer<EntryScreenModel>(
+    //     builder: (context, model, child) {
+    //       return model._currentWidgetIndex;
+    // Column(
+    // mainAxisAlignment: MainAxisAlignment.center,
+    // children: [
+    //   Text('Погнали!',
+    //     style: _textStyle(),),
+    //   // Кнопки для переключения виджетов
+    //   // Row(
+    //   //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+    //   //   children: [
+    //   ElevatedButton(
+    //     onPressed: () => model.changeWidget(1),
+    //     child: Text("Начать"),
+    //   ),
+    //   ElevatedButton(
+    //     onPressed: () => model.changeWidget(2),
+    //     child: Text("Настройки"),
+    //   ),
+    // ],
+    // ),
+    // Вывод выбранного виджета
+    // Expanded(
+    //   child: IndexedStack(
+    //     index: model.currentWidgetIndex,
+    //     children: [
+    //       startMenu(),
+    //       entryScreen(),
+    //       settingsMenu(),
+    //     ],
+    //   ),
+    // ),
+    //   ],
+    // );
+    //     },
+    //   ),
+    // ),
+    // ChangeNotifierProvider(
+    //   create: (context) => EntryScreenModel(),
+    //   child: Consumer<EntryScreenModel>(
+    //     builder: (context, model, child) {
+    //       return Column(
+    //         children: [
+    //           // Кнопки для переключения виджетов
+    //           Row(
+    //             mainAxisAlignment: MainAxisAlignment.spaceAround,
+    //             children: [
+    //               ElevatedButton(
+    //                 onPressed: () => model.changeWidget(0),
+    //                 child: Text("Виджет 1"),
+    //               ),
+    //               ElevatedButton(
+    //                 onPressed: () => model.changeWidget(1),
+    //                 child: Text("Виджет 2"),
+    //               ),
+    //             ],
+    //           ),
+    //           // Вывод выбранного виджета
+    //           Expanded(
+    //             child: IndexedStack(
+    //               index: model.currentWidgetIndex,
+    //               children: [
+    //                 startMenu(),
+    //                 entryScreen(),
+    //                 settingsMenu(),
+    //               ],
+    //             ),
+    //           ),
+    //         ],
+    //       );
+    //     },
+    //   ),
+    // ),
     // );
   }
 
-  Widget entryScreen (){
+  Widget entryScreen() {
     return Scaffold(
+      // appBar: AppBar(
+      //   elevation: 0,
+      // ),
       body: Center(
-      child:ListView(
-        children: <Widget>[
-          Container(
+        child: ListView(
+          children: <Widget>[
+            Container(
               color: Colors.lightBlue.shade100,
-              width: 2000,
-              height: 170,
-              child:
-              TextButton(
-                  style: _buttonStyle(),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> MyGoals()),); // CHANGE LATER!
-                  },
-                  child: Text('Мои цели', style: _textStyle()
-                  )
-              )
-          ),
-          Container(
-            color: Colors.lightBlue.shade200,
-            width: 2000,
-            height: 170,
-            child:
-            TextButton(
-                style: _buttonStyle(),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> WeatherPage()),); // CHANGE LATER!
-                },
-                child: Text('Мой спорт', style: _textStyle()
-                )
+              width: MediaQuery.of(context).size.width / 5,
+              height: MediaQuery.of(context).size.height / 3 - 6,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyGoals()),
+                  );
+                }, // CHANGE LATER!
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Icon(
+                    Icons.add,
+                    size: MediaQuery.of(context).size.longestSide / 30,
+                    weight: 0.9,
+                  ),
+                  Text('Мои цели', style: _textStyle(context)),
+                ]),
+              ),
             ),
-          ),
-          Container(
-            color: Colors.lightBlue.shade300,
-            width: 2000,
-            height: 170,
-            child:
-            TextButton(
-                style: _buttonStyle(),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> MyGoals()),); // CHANGE LATER!
-                },
-                child: Text('Мои цели', style: _textStyle()
-                )
+            Divider(
+              height: 10,
+              color: Colors.white,
             ),
-          ),
-          Container(
-            color: Colors.lightBlue.shade400,
-            width: 2000,
-            height: 170,
-            child:
-            TextButton(
-                style: _buttonStyle(),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> ToDoCategory(),)); // CHANGE LATER!
+            Container(
+              color: Colors.lightBlue.shade300,
+              width: MediaQuery.of(context).size.width / 5,
+              height: MediaQuery.of(context).size.height / 3 - 7,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => WeatherPage()),
+                  );
                 },
-                child: Text('Мои to-do', style: _textStyle()
-                )
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Icon(
+                    Icons.ga,
+                    size: MediaQuery.of(context).size.longestSide / 30,
+                    weight: 0.9,
+                  ),
+                  Text('Мой спорт', style: _textStyle(context)),
+                ]),
+              ),
             ),
-          ),
-          Container(
-            color: Colors.lightBlue.shade500,
-            width: 2000,
-            height: 170,
-            child:
-            TextButton(
-                style: _buttonStyle(),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> MyGoals()),); // CHANGE LATER!
+            Divider(
+              height: 10,
+              color: Colors.white,
+            ),
+            Container(
+              color: Colors.lightBlue.shade500,
+              width: MediaQuery.of(context).size.width / 5,
+              height: MediaQuery.of(context).size.height / 3 - 7,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ToDoCategory()),
+                  );
                 },
-                child: Text('Мои цели', style: _textStyle()
-                )
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Icon(
+                    Icons.add,
+                    size: MediaQuery.of(context).size.longestSide / 30,
+                    weight: 0.9,
+                  ),
+                  Text('Мои дела', style: _textStyle(context)),
+                ]),
+              ),
+
+              // TextButton(
+              //     style: _buttonStyle(),
+              //     onPressed: () {
+              //       Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //             builder: (context) => ToDoCategory(),
+              //           )); // CHANGE LATER!
+              //     },
+              //     child: Text('Мои дела', style: _textStyle(context))),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
       ),
     );
   }
 
-  // Widget settingsMenu(){
-  //   return
-  //     Text('settings');
-  // }
+// Widget settingsMenu(){
+//   return
+//     Text('settings');
+// }
 
+// return Column(
+//   mainAxisAlignment: MainAxisAlignment.center,
+//   children: [
+//
+//     Text('Погнали!',
+//     style: _textStyle(),),
+//     ElevatedButton(
+//       onPressed: () => model.changeWidget(0),
+//       child: Text("Виджет 1"),
+//     ),
+//     ElevatedButton(
+//       onPressed: () => model.changeWidget(1),
+//       child: Text("Виджет 2"),
+//     ),
 
-    // return Column(
-    //   mainAxisAlignment: MainAxisAlignment.center,
-    //   children: [
-    //
-    //     Text('Погнали!',
-    //     style: _textStyle(),),
-    //     ElevatedButton(
-    //       onPressed: () => model.changeWidget(0),
-    //       child: Text("Виджет 1"),
-    //     ),
-    //     ElevatedButton(
-    //       onPressed: () => model.changeWidget(1),
-    //       child: Text("Виджет 2"),
-    //     ),
-
-
-  //     ],
-  //   );
-  // }
+//     ],
+//   );
+// }
 }
 
 // class StartMenu extends StatelessWidget {
