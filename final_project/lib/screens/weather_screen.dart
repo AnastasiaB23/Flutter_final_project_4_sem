@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:practice6/entryscreen.dart';
-import 'package:practice6/model/weather_model.dart';
+import 'package:practice6/screens/entryscreen.dart';
+import 'package:practice6/screens/train_choice_screen.dart';
+import 'package:practice6/weather_model.dart';
 import 'package:practice6/weather_service.dart';
 
 class WeatherPage extends StatefulWidget {
@@ -111,7 +112,7 @@ class _WeatherPageState extends State<WeatherPage> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => EntryScreen()),
+                MaterialPageRoute(builder: (context) => TrainChoiceScreen()),
               );
               // CHANGE LATER!
             },

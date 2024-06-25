@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:practice6/screens/todo_preview_screen.dart';
 import 'package:practice6/screens/weather_screen.dart';
 
-import 'screens/goals_screen.dart';
+import 'goals_screen.dart';
 
 // class EntryScreenModel with ChangeNotifier {
 //   Widget _currentWidgetIndex = StartMenu();

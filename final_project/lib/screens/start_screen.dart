@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:practice6/entryscreen.dart';
+import 'package:practice6/screens/entryscreen.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({
