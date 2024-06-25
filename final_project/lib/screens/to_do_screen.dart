@@ -92,11 +92,11 @@ class _ToDoScreenState extends State<ToDoScreen> {
       case 'button2':
         currentTodos = todos_button2;
         categoryName = '2. Не срочное и важное';
-        backColor = Colors.green;
+        backColor = Colors.yellow;
       case 'button3':
         currentTodos = todos_button3;
         categoryName = '3. Срочное и не важное';
-        backColor =Colors.yellow;
+        backColor =Colors.green;
       case 'button4':
         currentTodos = todos_button4;
         categoryName = '4. Не срочное и не важное';

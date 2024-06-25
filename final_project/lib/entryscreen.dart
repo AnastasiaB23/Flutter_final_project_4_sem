@@ -1,13 +1,8 @@
-import 'package:flutter/cupertino.dart';
-import 'package:practice6/screens/weather_screen.dart';
-import 'package:practice6/shared_preferences_service.dart';
-import 'package:provider/provider.dart';
-
 import 'package:flutter/material.dart';
 import 'package:practice6/screens/todo_preview_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:practice6/screens/weather_screen.dart';
 
-import 'screens/first_screen.dart';
+import 'screens/goals_screen.dart';
 
 // class EntryScreenModel with ChangeNotifier {
 //   Widget _currentWidgetIndex = StartMenu();
@@ -191,81 +186,95 @@ class _EntryScreenState extends State<EntryScreen> {
 
   Widget entryScreen() {
     return Scaffold(
-      // appBar: AppBar(
-      //   elevation: 0,
-      // ),
+      appBar: AppBar(
+        elevation: 0,
+      ),
       body: Center(
         child: ListView(
           children: <Widget>[
-            Container(
-              color: Colors.lightBlue.shade100,
-              width: MediaQuery.of(context).size.width / 5,
-              height: MediaQuery.of(context).size.height / 3 - 6,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MyGoals()),
-                  );
-                }, // CHANGE LATER!
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyGoals()),
+                );
+              },
+              child: Container(
+                color: Colors.lightBlue.shade100,
+                width: MediaQuery.of(context).size.width / 5,
+                height: MediaQuery.of(context).size.height / 3.6,
+                // child: GestureDetector(
+                //   CHANGE LATER!
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Icon(
-                    Icons.add,
-                    size: MediaQuery.of(context).size.longestSide / 30,
+                    Icons.flag_circle,
+                    size: MediaQuery.of(context).size.longestSide / 25,
                     weight: 0.9,
+                  ),
+                  SizedBox(
+                    width: 10,
                   ),
                   Text('Мои цели', style: _textStyle(context)),
                 ]),
               ),
             ),
+            // ),
+
             Divider(
               height: 10,
               color: Colors.white,
             ),
-            Container(
-              color: Colors.lightBlue.shade300,
-              width: MediaQuery.of(context).size.width / 5,
-              height: MediaQuery.of(context).size.height / 3 - 7,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => WeatherPage()),
-                  );
-                },
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => WeatherPage()),
+                );
+              },
+              child: Container(
+                color: Colors.lightBlue.shade300,
+                width: MediaQuery.of(context).size.width / 5,
+                height: MediaQuery.of(context).size.height / 3.6,
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Icon(
-                    Icons.ga,
-                    size: MediaQuery.of(context).size.longestSide / 30,
+                    Icons.fitness_center,
+                    size: MediaQuery.of(context).size.longestSide / 25,
                     weight: 0.9,
                   ),
-                  Text('Мой спорт', style: _textStyle(context)),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text('Мои тренировки', style: _textStyle(context)),
                 ]),
               ),
             ),
+            // ),
             Divider(
               height: 10,
               color: Colors.white,
             ),
-            Container(
-              color: Colors.lightBlue.shade500,
-              width: MediaQuery.of(context).size.width / 5,
-              height: MediaQuery.of(context).size.height / 3 - 7,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ToDoCategory()),
-                  );
-                },
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ToDoCategory()),
+                );
+              },
+              child: Container(
+                color: Colors.lightBlue.shade500,
+                width: MediaQuery.of(context).size.width / 5,
+                height: MediaQuery.of(context).size.height / 3.6,
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Icon(
-                    Icons.add,
-                    size: MediaQuery.of(context).size.longestSide / 30,
+                    Icons.list,
+                    size: MediaQuery.of(context).size.longestSide / 25,
                     weight: 0.9,
+                  ),
+                  SizedBox(
+                    width: 10,
                   ),
                   Text('Мои дела', style: _textStyle(context)),
                 ]),
@@ -282,16 +291,12 @@ class _EntryScreenState extends State<EntryScreen> {
               //     },
               //     child: Text('Мои дела', style: _textStyle(context))),
             ),
+            // ),
           ],
         ),
       ),
     );
   }
-
-// Widget settingsMenu(){
-//   return
-//     Text('settings');
-// }
 
 // return Column(
 //   mainAxisAlignment: MainAxisAlignment.center,

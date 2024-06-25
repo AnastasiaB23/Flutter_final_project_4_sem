@@ -5,7 +5,7 @@ class SharedPreferencesService {
 
   SharedPreferencesService(this.sharedPreferences);
 
-  Future<List<String>> getTodo(String key) async {
+  Future<List<String>> getTodo([String key = 'goals']) async {
     print('4');
     return sharedPreferences.getStringList('todos_$key') ?? [];
   }

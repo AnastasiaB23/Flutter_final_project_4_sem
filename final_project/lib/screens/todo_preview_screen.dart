@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:practice6/screens/to_do_screen.dart';
 
@@ -23,132 +21,172 @@ class ToDoCategory extends StatelessWidget {
     }
   }
 
+  ButtonStyle _buttonStyleForToDoPrev() {
+    return TextButton.styleFrom(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+    );
+  }
+
+  TextStyle _textStyleForToDoPrev(context) {
+    return TextStyle(
+      fontSize: MediaQuery.of(context).size.longestSide / 40,
+      fontWeight: FontWeight.bold,
+      color: Colors.black.withOpacity(0.9),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Scaffold(
+      appBar: AppBar(),
+      body: Stack(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  height: MediaQuery.of(context).size.height / 2.5,
-                  decoration: BoxDecoration(
-                      color: Colors.deepOrangeAccent,
-                      borderRadius: BorderRadius.circular(25)),
-                  child: TextButton(
-                      style: _buttonStyleForToDoPrev(),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ToDoScreen(
-                                    buttonName: ButtonType[0],
-                                  )),
-                        );
-                      },
-                      child: Text(
-                        _categoryName(1),
-                        style: _textStyleForToDoPrev(context),
-                      ))),
-              Container(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  height: MediaQuery.of(context).size.height / 2.5,
-                  decoration: BoxDecoration(
-                      color: Colors.yellow,
-                      borderRadius: BorderRadius.circular(25)),
-                  child: TextButton(
-                      style: _buttonStyleForToDoPrev(),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ToDoScreen(
-                                    buttonName: ButtonType[1],
-                                  )),
-                        );
-                        // CHANGE LATER!
-                      },
-                      child: Text(
-                        _categoryName(2),
-                        style: _textStyleForToDoPrev(context),
-                      )))
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  height: MediaQuery.of(context).size.height / 2.5,
-                  // width: 150,
-                  // height: 150,
-                  decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(25)),
-                  child: TextButton(
-                      style: _buttonStyleForToDoPrev(),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ToDoScreen(
-                                    buttonName: ButtonType[2],
-                                  )),
-                        );
-                      },
-                      child: Text(
-                        _categoryName(3),
-                        style: _textStyleForToDoPrev(context),
-                      ))),
-              Container(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  height: MediaQuery.of(context).size.height / 2.5,
-                  // width: 150,
-                  // height: 150,
-                  decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(25)),
-                  child: TextButton(
-                      style: _buttonStyleForToDoPrev(),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ToDoScreen(
-                                    buttonName: ButtonType[3],
-                                  )),
-                        );
-                        // CHANGE LATER!
-                      },
-                      child: Text(
-                        _categoryName(4),
-                        style: _textStyleForToDoPrev(context),
-                      )))
-            ],
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/background_bees.jpg'),
+                  fit: BoxFit.fitHeight),
+            ),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.longestSide / 4.3,
+                ),
+                Container(
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                  width:
+                                      MediaQuery.of(context).size.shortestSide /
+                                          2.5,
+                                  height:
+                                      MediaQuery.of(context).size.shortestSide /
+                                          2.5,
+                                  decoration: BoxDecoration(
+                                      color: Colors.deepOrangeAccent,
+                                      borderRadius: BorderRadius.circular(25)),
+                                  child: TextButton(
+                                      style: _buttonStyleForToDoPrev(),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => ToDoScreen(
+                                                    buttonName: ButtonType[0],
+                                                  )),
+                                        );
+                                      },
+                                      child: Text(
+                                        _categoryName(1),
+                                        style: _textStyleForToDoPrev(context),
+                                      ))),
+                              Container(
+                                  width:
+                                      MediaQuery.of(context).size.shortestSide /
+                                          2.5,
+                                  height:
+                                      MediaQuery.of(context).size.shortestSide /
+                                          2.5,
+                                  decoration: BoxDecoration(
+                                      color: Colors.yellow,
+                                      borderRadius: BorderRadius.circular(25)),
+                                  child: TextButton(
+                                      style: _buttonStyleForToDoPrev(),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => ToDoScreen(
+                                                    buttonName: ButtonType[1],
+                                                  )),
+                                        );
+                                      },
+                                      child: Text(
+                                        _categoryName(2),
+                                        style: _textStyleForToDoPrev(context),
+                                      )))
+                            ],
+                          ),
+                          SizedBox(
+                            height:
+                                MediaQuery.of(context).size.shortestSide / 11,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                  width:
+                                      MediaQuery.of(context).size.shortestSide /
+                                          2.5,
+                                  height:
+                                      MediaQuery.of(context).size.shortestSide /
+                                          2.5,
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      borderRadius: BorderRadius.circular(25)),
+                                  child: TextButton(
+                                      style: _buttonStyleForToDoPrev(),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => ToDoScreen(
+                                                    buttonName: ButtonType[2],
+                                                  )),
+                                        );
+                                      },
+                                      child: Text(
+                                        _categoryName(3),
+                                        style: _textStyleForToDoPrev(context),
+                                      ))),
+                              Container(
+                                  width:
+                                      MediaQuery.of(context).size.shortestSide /
+                                          2.5,
+                                  height:
+                                      MediaQuery.of(context).size.shortestSide /
+                                          2.5,
+                                  decoration: BoxDecoration(
+                                      color: Colors.blueAccent,
+                                      borderRadius: BorderRadius.circular(25)),
+                                  child: TextButton(
+                                      style: _buttonStyleForToDoPrev(),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => ToDoScreen(
+                                                    buttonName: ButtonType[3],
+                                                  )),
+                                        );
+                                      },
+                                      child: Text(
+                                        _categoryName(4),
+                                        style: _textStyleForToDoPrev(context),
+                                      )))
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
     );
   }
-}
-
-ButtonStyle _buttonStyleForToDoPrev() {
-  return TextButton.styleFrom(
-    surfaceTintColor: Colors.pinkAccent.shade200,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(20),
-    ),
-  );
-}
-
-TextStyle _textStyleForToDoPrev(context) {
-  return TextStyle(
-    fontSize: MediaQuery.of(context).size.longestSide / 40,
-    fontWeight: FontWeight.bold,
-    color: Colors.black.withOpacity(0.9),
-  );
 }
