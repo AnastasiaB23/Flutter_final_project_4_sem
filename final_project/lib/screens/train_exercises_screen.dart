@@ -42,7 +42,7 @@ class TrainExercisesScreenModel with ChangeNotifier {
 }
 
 class TrainExercisesScreen extends StatefulWidget {
-  bool female;
+  final bool female;
 
   TrainExercisesScreen({Key? key, required this.female}) : super(key: key);
 
@@ -248,11 +248,13 @@ class _countdownTimerState extends State<countdownTimer> {
   }
 }
 
-Widget descriptionTextStyle (String text, context){
+Widget descriptionTextStyle(String text, context) {
   return Container(
     padding: EdgeInsets.all(8.0),
-    child:
-    Text(text, style: TextStyle(fontSize: MediaQuery.of(context).size.shortestSide / 20,)),
+    child: Text(text,
+        style: TextStyle(
+          fontSize: MediaQuery.of(context).size.shortestSide / 20,
+        )),
   );
 }
 
@@ -261,11 +263,15 @@ class womanExercisesWidgetPart1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        descriptionTextStyle('Отжимания «Паук» укрепляют мышцы кора, а также косые мышцы живота и квадрицепс.'
-            'Выполняйте в три подхода по 8-10 повторений на каждую ногу;', context),
+        descriptionTextStyle(
+            '1. Отжимания «Паук» укрепляют мышцы кора, а также косые мышцы живота и квадрицепс.'
+            'Выполняйте в три подхода по 8-10 повторений на каждую ногу;',
+            context),
         Lottie.asset('assets/woman_spider_man_pushups.json'),
-        descriptionTextStyle('Упражнение «Открытие книги» улучшает подвижность грудного отдела позвоночника и снимает ощущение скованности в этой области. '
-            'Выполняйте по 8–15 повторений на каждую сторону в медленном темпе.', context),
+        descriptionTextStyle(
+            '2. Упражнение «Открытие книги» улучшает подвижность грудного отдела позвоночника и снимает ощущение скованности в этой области. '
+            'Выполняйте по 8–15 повторений на каждую сторону в медленном темпе.',
+            context),
         Lottie.asset('assets/woman_open_books.json'),
       ],
     );
@@ -277,11 +283,15 @@ class womanExercisesWidgetPart2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        descriptionTextStyle('«Мёртвый жук» — упражнение для укрепления пресса и глубоких мышц кора. '
-            'Выполнять упражнение следует 10–12 раз в три подхода.', context),
+        descriptionTextStyle(
+            '«3. Мёртвый жук» — упражнение для укрепления пресса и глубоких мышц кора. '
+            'Выполнять упражнение следует 10–12 раз в три подхода.',
+            context),
         Lottie.asset('assets/woman_deadbug.json'),
-        descriptionTextStyle('Поза кобры укрепляеи мышцы спины, ягодиц и рук. '
-            'Повторяйте два-три раза по 15-30 секунд через короткий отдых.', context),
+        descriptionTextStyle(
+            '4. Поза кобры укрепляеи мышцы спины, ягодиц и рук. '
+            'Повторяйте два-три раза по 15-30 секунд через короткий отдых.',
+            context),
         Lottie.asset('assets/woman_cobra.json'),
       ],
     );
@@ -293,11 +303,15 @@ class manExercisesWidgetPart1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        descriptionTextStyle('Подобная растяжка с приседаниями позволяет хорошо разогреть мышцы перед силовой тренировкой. '
-            'Выполнять упражнение следует 10-12 раз в три подхода.', context),
+        descriptionTextStyle(
+            '1. Подобная растяжка с приседаниями позволяет хорошо разогреть мышцы перед силовой тренировкой. '
+            'Выполнять упражнение следует 10-12 раз в три подхода.',
+            context),
         Lottie.asset('assets/man_aerobic.json'),
-        descriptionTextStyle('Русский твист - это простое упражнение для мышц брюшного пресса для проработки позвоночника, плеч и бедер.'
-            ' Выполнять от 10 до 25 повторений в 3-4 подхода.', context),
+        descriptionTextStyle(
+            '2. Русский твист - это простое упражнение для мышц брюшного пресса для проработки позвоночника, плеч и бедер.'
+            ' Выполнять от 10 до 25 повторений в 3-4 подхода.',
+            context),
         Lottie.asset('assets/man_russian_twist.json'),
       ],
     );
@@ -309,12 +323,16 @@ class manExercisesWidgetPart2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        descriptionTextStyle('Упражнение "Планка низко-высоко" (plank low to high) - '
+        descriptionTextStyle(
+            '3. Упражнение "Планка низко-высоко" (plank low to high) - '
             'это динамическая вариация классической планки, которая направлена на развитие мышц спины, ягодиц и пресса.  '
-            'Начните с 2-3 подходов по 8-10 повторений.', context),
+            'Начните с 2-3 подходов по 8-10 повторений.',
+            context),
         Lottie.asset('assets/man_plank_low_to_high.json'),
-        descriptionTextStyle('Упражнение «велосипедный хруст» (elbow-to-knee twisting crunch) направлено на работу мышц живота. '
-            'Начните с 2-3 подходов по 10-12 повторений с каждой стороны.', context),
+        descriptionTextStyle(
+            '4. Упражнение «велосипедный хруст» (elbow-to-knee twisting crunch) направлено на работу мышц живота. '
+            'Начните с 2-3 подходов по 10-12 повторений с каждой стороны.',
+            context),
         Lottie.asset('assets/man_elbow_to_knee_crunch.json'),
       ],
     );

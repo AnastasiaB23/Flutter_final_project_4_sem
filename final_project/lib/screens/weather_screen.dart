@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:practice6/screens/entryscreen.dart';
 import 'package:practice6/screens/train_choice_screen.dart';
 import 'package:practice6/weather_model.dart';
 import 'package:practice6/weather_service.dart';
@@ -81,7 +79,7 @@ class _WeatherPageState extends State<WeatherPage> {
         ),
         Container(
           width: MediaQuery.of(context).size.width / 3,
-          height: 40,
+          height: MediaQuery.of(context).size.shortestSide / 7,
           decoration: BoxDecoration(),
           child: Text(
             _weather?.cityName ?? "loading city..",
@@ -106,7 +104,7 @@ class _WeatherPageState extends State<WeatherPage> {
           ),
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.longestSide / 11,
+          height: MediaQuery.of(context).size.longestSide / 13,
         ),
         GestureDetector(
             onTap: () {
@@ -114,13 +112,10 @@ class _WeatherPageState extends State<WeatherPage> {
                 context,
                 MaterialPageRoute(builder: (context) => TrainChoiceScreen()),
               );
-              // CHANGE LATER!
             },
             child: Container(
               width: MediaQuery.of(context).size.shortestSide / 1.3,
               height: MediaQuery.of(context).size.longestSide / 6,
-              // width: 150,
-              // height: 150,
               padding: EdgeInsets.only(left: 2, right: 2),
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.indigo, width: 3.5),
@@ -133,7 +128,6 @@ class _WeatherPageState extends State<WeatherPage> {
                     fontSize: MediaQuery.of(context).size.longestSide / 40,
                     fontWeight: FontWeight.bold,
                     color: Colors.black.withOpacity(0.9),
-                    // color: Colors.white,
                   ),
                 ),
               ),

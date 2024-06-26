@@ -4,7 +4,7 @@ import 'package:practice6/shared_preferences_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ToDoScreen extends StatefulWidget {
-  String buttonName;
+  final String buttonName;
 
   ToDoScreen({Key? key, required this.buttonName}) : super(key: key);
 
@@ -96,7 +96,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
       case 'button3':
         currentTodos = todos_button3;
         categoryName = '3. Срочное и не важное';
-        backColor =Colors.green;
+        backColor = Colors.green;
       case 'button4':
         currentTodos = todos_button4;
         categoryName = '4. Не срочное и не важное';
@@ -106,16 +106,13 @@ class _ToDoScreenState extends State<ToDoScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-      ),
-      body:
-      ListView(
+      appBar: AppBar(),
+      body: ListView(
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
             height: 40,
-            decoration: BoxDecoration(
-            ),
+            decoration: BoxDecoration(),
             child: Text(
               categoryName,
               textAlign: TextAlign.center,
@@ -125,76 +122,76 @@ class _ToDoScreenState extends State<ToDoScreen> {
                   fontWeight: FontWeight.bold),
             ),
           ),
-
-      SizedBox(
-        height: MediaQuery.of(context).size.height,
-        child: ListView.builder(
-            itemCount: currentTodos.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => AddTodoScreen(
-                          buttonName: buttype,
-                          title: currentTodos[index],
-                          index: index)));
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        width: 1,
-                        color: Colors.indigo,
-                      )),
-                  margin: const EdgeInsets.only(
-                    top: 10,
-                    left: 20,
-                    right: 20,
-                    bottom: 10,
-                  ),
-                  height: 60,
-                  child: Row(children: [
-                    Expanded(
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 10,
+          SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: ListView.builder(
+                itemCount: currentTodos.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => AddTodoScreen(
+                              buttonName: buttype,
+                              title: currentTodos[index],
+                              index: index)));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            width: 1,
+                            color: Colors.indigo,
+                          )),
+                      margin: const EdgeInsets.only(
+                        top: 10,
+                        left: 20,
+                        right: 20,
+                        bottom: 10,
+                      ),
+                      height: 60,
+                      child: Row(children: [
+                        Expanded(
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  currentTodos[index],
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
                           ),
-                          Expanded(
-                            child: Text(
-                              currentTodos[index],
-                              overflow: TextOverflow.ellipsis,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            onTap: () async {
+                              setState(() {
+                                currentTodos.removeAt(index);
+                                // print('worked');
+                              });
+
+                              final prefs =
+                                  await SharedPreferences.getInstance();
+                              print(currentTodos);
+                              await prefs.setStringList(
+                                  'todos_$buttype', currentTodos);
+                            },
+                            child: Icon(
+                              Icons.delete,
+                              color: Colors.red,
                             ),
                           ),
-                        ],
-                      ),
+                        )
+                      ]),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: GestureDetector(
-                        onTap: () async {
-                          setState(() {
-                            currentTodos.removeAt(index);
-                            // print('worked');
-                          });
-
-                          final prefs = await SharedPreferences.getInstance();
-                          print(currentTodos);
-                          await prefs.setStringList(
-                              'todos_$buttype', currentTodos);
-                        },
-                        child: Icon(
-                          Icons.delete,
-                          color: Colors.red,
-                        ),
-                      ),
-                    )
-                  ]),
-                ),
-              );
-            }),
-      ),
+                  );
+                }),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(

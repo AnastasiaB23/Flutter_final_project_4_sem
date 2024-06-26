@@ -13,9 +13,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Погнали!',
-      theme: ThemeData(
-        primarySwatch: Colors.orange,
-      ),
       home: StartScreen(),
     );
   }

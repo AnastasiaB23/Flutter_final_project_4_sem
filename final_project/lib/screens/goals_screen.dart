@@ -83,24 +83,8 @@ class _MyGoalsState extends State<MyGoals> {
                   });
 
                   final prefs = await SharedPreferences.getInstance();
-                  // print(currentTodos);
                   await prefs.setStringList('todos_goals', goals);
                 },
-                // onLongPress: ()
-                // _deleteGoal(goals.indexOf(item));
-                // async {
-                //   setState(() {
-                //     goals.removeAt(goals.indexOf(item));
-                //     print('worked');
-                //   });
-                //
-                //   final prefs = await SharedPreferences.getInstance();
-                //   // print(currentTodos);
-                //   await prefs.setStringList(
-                //       'todos_goals', goals);
-                //   Congratulations();
-
-                // },
               ))
           .toList(),
     );
@@ -112,12 +96,6 @@ class _MyGoalsState extends State<MyGoals> {
       appBar: AppBar(),
       body: ListView(
         children: [
-          // Container(
-          //   padding: EdgeInsets.symmetric(
-          //     horizontal: 20,
-          //     vertical: 15,
-          //   ),
-          // ),
           _ListWidget(),
         ],
       ),
@@ -143,10 +121,7 @@ class _MyGoalsState extends State<MyGoals> {
                                   [_textEditingController.text]).toList());
                           _initSharedPreferences();
                           _textEditingController.clear();
-                        }
-                        // _addGoal();
-
-                        else {
+                        } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
@@ -169,96 +144,22 @@ class _MyGoalsState extends State<MyGoals> {
     );
   }
 
-  void _addGoal() {
-    setState(() {
-      goals.add(_textEditingController.text);
-      _textEditingController.clear();
-    });
-  }
-
-  void _deleteGoal(int index) {
-    setState(() {
-      goals.removeAt(index);
-    });
-  }
-
-  // ListTile _addGoals(){
-  //   return ListTile(
-  //       title: Text(_enteredName),
-  //       trailing: Icon(Icons.arrow_forward_ios),
-  //       onTap: () {
-  //         Navigator.push(
-  //           context,
-  //           MaterialPageRoute(builder: (context) => ToDoScreen(id: 0)),
-  //           //   CHANGE!
-  //         );
-  //       },
-  //       onLongPress: () {
-  //         showDialog(
-  //           context: context,
-  //           builder: (context) {
-  //             return AlertDialog(
-  //               title: Text('Введите название'),
-  //               content: TextField(
-  //                 controller: _textEditingController,
-  //                 decoration: InputDecoration(
-  //                   hintText: 'Название',
-  //                   border: InputBorder.none,
-  //                 ),
-  //               ),
-  //               actions: [
-  //                 TextButton(
-  //                   onPressed: () {
-  //                     Navigator.of(context).pop();
-  //                     setState(() {
-  //                       _enteredName = _textEditingController.text;
-  //                       _textEditingController.clear();
-  //                     });
-  //                   },
-  //                   child: Text('OK'),
-  //                 ),
-  //               ],
-  //             );
-  //           },
-  //         );
-  //       }
-  //   );
-  // }
-
   Widget Congratulations() {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
         child: SizedBox(
-          // alignment: Alignment.center,
           width: MediaQuery.of(context).size.width / 1.5,
           height: MediaQuery.of(context).size.height / 1.5,
-          child: Stack(
-
-              // alignment: Alignment.center,
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Lottie.asset('assets/congratulations.json'),
-                Container(
-                  padding: EdgeInsets.only(top: 130),
-                  child: Lottie.asset('assets/checkbox_full.json'),
-                )
-              ]
-              // ),
-              // Column(
-              //   mainAxisAlignment: MainAxisAlignment.start,
-              //   children: [],
-              // ),
-
-              // ),
-              ),
+          child: Stack(children: <Widget>[
+            Lottie.asset('assets/congratulations.json'),
+            Container(
+              padding: EdgeInsets.only(top: 130),
+              child: Lottie.asset('assets/checkbox_full.json'),
+            )
+          ]),
         ),
-
-        // ]
       ),
-      // ),
     );
   }
-
-//   управление состоянием экранов, смена виджетов с использованием одного Scaffold!!!!!!!!!
 }

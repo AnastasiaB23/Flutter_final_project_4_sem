@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:practice6/screens/train_exercises_screen.dart';
 
 String URLs(int number) {
@@ -38,8 +36,13 @@ class TrainChoiceScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           GestureDetector(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => TrainExercisesScreen(female: true,)));
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => TrainExercisesScreen(
+                            female: true,
+                          )));
             },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +52,13 @@ class TrainChoiceScreen extends StatelessWidget {
                   height: MediaQuery.of(context).size.height / 3,
                   child: _cachedNetworkImage(1),
                 ),
-                Text('Для девушек', style: TextStyle(color: Colors.black, fontSize: MediaQuery.of(context).size.longestSide/40, fontWeight: FontWeight.bold),),
+                Text(
+                  'Для девушек',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: MediaQuery.of(context).size.longestSide / 40,
+                      fontWeight: FontWeight.bold),
+                ),
               ],
             ),
           ),
@@ -57,8 +66,13 @@ class TrainChoiceScreen extends StatelessWidget {
             height: 20,
           ),
           GestureDetector(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => TrainExercisesScreen(female: false,)));
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => TrainExercisesScreen(
+                            female: false,
+                          )));
             },
             child: Column(
               children: [
@@ -67,7 +81,14 @@ class TrainChoiceScreen extends StatelessWidget {
                   height: MediaQuery.of(context).size.height / 3,
                   child: _cachedNetworkImage(2),
                 ),
-                Text('Для мужчин', style: TextStyle(color: Colors.black, fontWeight:  FontWeight.bold, fontSize: MediaQuery.of(context).size.longestSide/40,),)
+                Text(
+                  'Для мужчин',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: MediaQuery.of(context).size.longestSide / 40,
+                  ),
+                )
               ],
             ),
           ),

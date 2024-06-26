@@ -107,7 +107,7 @@ class _StartScreenState extends State<StartScreen>
                           builder: (context) {
                             return AlertDialog(
                               content: Text(
-                                  '''Версия: 1.2.3                               
+                                  '''Версия: 1.0.0                               
 От автора: была рада создать его для Вас)
 Пользуйтесь на здоровье и воплощайте мечты в жизнь!:)'''),
                               actions: [
