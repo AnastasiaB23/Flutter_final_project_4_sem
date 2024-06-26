@@ -284,7 +284,7 @@ class womanExercisesWidgetPart2 extends StatelessWidget {
     return ListView(
       children: [
         descriptionTextStyle(
-            '«3. Мёртвый жук» — упражнение для укрепления пресса и глубоких мышц кора. '
+            '3. «Мёртвый жук» — упражнение для укрепления пресса и глубоких мышц кора. '
             'Выполнять упражнение следует 10–12 раз в три подхода.',
             context),
         Lottie.asset('assets/woman_deadbug.json'),
