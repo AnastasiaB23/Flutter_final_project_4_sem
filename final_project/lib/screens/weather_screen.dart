@@ -73,66 +73,70 @@ class _WeatherPageState extends State<WeatherPage> {
       appBar: AppBar(
         elevation: 0,
       ),
-      body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-        Icon(
-          Icons.location_on,
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width / 3,
-          height: MediaQuery.of(context).size.shortestSide / 7,
-          decoration: BoxDecoration(),
-          child: Text(
-            _weather?.cityName ?? "loading city..",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
-              Text(
-                '${_weather?.temperature.round()}°C',
+      body: ListView(
+        children: [
+          Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+            Icon(
+              Icons.location_on,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width / 3,
+              height: MediaQuery.of(context).size.shortestSide / 7,
+              decoration: BoxDecoration(),
+              child: Text(
+                _weather?.cityName ?? "loading city..",
+                textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              Text(
-                _weather?.mainCondition ?? "",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.longestSide / 13,
-        ),
-        GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => TrainChoiceScreen()),
-              );
-            },
-            child: Container(
-              width: MediaQuery.of(context).size.shortestSide / 1.3,
-              height: MediaQuery.of(context).size.longestSide / 6,
-              padding: EdgeInsets.only(left: 2, right: 2),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.indigo, width: 3.5),
-                  color: Colors.lightBlue.shade100,
-                  borderRadius: BorderRadius.circular(25)),
-              child: Center(
-                child: Text(
-                  'Перейти к тренировкам',
-                  style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.longestSide / 40,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black.withOpacity(0.9),
+            ),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
+                  Text(
+                    '${_weather?.temperature.round()}°C',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                ),
+                  Text(
+                    _weather?.mainCondition ?? "",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
-            )),
-      ]),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.longestSide / 13,
+            ),
+            GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TrainChoiceScreen()),
+                  );
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.shortestSide / 1.3,
+                  height: MediaQuery.of(context).size.longestSide / 6,
+                  padding: EdgeInsets.only(left: 2, right: 2),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.indigo, width: 3.5),
+                      color: Colors.lightBlue.shade100,
+                      borderRadius: BorderRadius.circular(25)),
+                  child: Center(
+                    child: Text(
+                      'Перейти к тренировкам',
+                      style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.longestSide / 40,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black.withOpacity(0.9),
+                      ),
+                    ),
+                  ),
+                )),
+          ]),
+        ],
+      ),
     );
   }
 }

@@ -41,149 +41,153 @@ class ToDoCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Stack(
+      body: ListView(
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/background_bees.jpg'),
-                  fit: BoxFit.fitHeight),
-            ),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.longestSide / 4.3,
+          Stack(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/background_bees.jpg'),
+                      fit: BoxFit.fitHeight),
                 ),
-                Container(
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: ListView(
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.longestSide / 4.3,
+                    ),
+                    Container(
+                      child: Stack(
+                        alignment: Alignment.center,
                         children: [
-                          Row(
+                          Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Container(
-                                  width:
-                                      MediaQuery.of(context).size.shortestSide /
-                                          2.5,
-                                  height:
-                                      MediaQuery.of(context).size.shortestSide /
-                                          2.5,
-                                  decoration: BoxDecoration(
-                                      color: Colors.deepOrangeAccent,
-                                      borderRadius: BorderRadius.circular(25)),
-                                  child: TextButton(
-                                      style: _buttonStyleForToDoPrev(),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => ToDoScreen(
-                                                    buttonName: ButtonType[0],
-                                                  )),
-                                        );
-                                      },
-                                      child: Text(
-                                        _categoryName(1),
-                                        style: _textStyleForToDoPrev(context),
-                                      ))),
-                              Container(
-                                  width:
-                                      MediaQuery.of(context).size.shortestSide /
-                                          2.5,
-                                  height:
-                                      MediaQuery.of(context).size.shortestSide /
-                                          2.5,
-                                  decoration: BoxDecoration(
-                                      color: Colors.yellow,
-                                      borderRadius: BorderRadius.circular(25)),
-                                  child: TextButton(
-                                      style: _buttonStyleForToDoPrev(),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => ToDoScreen(
-                                                    buttonName: ButtonType[1],
-                                                  )),
-                                        );
-                                      },
-                                      child: Text(
-                                        _categoryName(2),
-                                        style: _textStyleForToDoPrev(context),
-                                      )))
-                            ],
-                          ),
-                          SizedBox(
-                            height:
-                                MediaQuery.of(context).size.shortestSide / 11,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                  width:
-                                      MediaQuery.of(context).size.shortestSide /
-                                          2.5,
-                                  height:
-                                      MediaQuery.of(context).size.shortestSide /
-                                          2.5,
-                                  decoration: BoxDecoration(
-                                      color: Colors.green,
-                                      borderRadius: BorderRadius.circular(25)),
-                                  child: TextButton(
-                                      style: _buttonStyleForToDoPrev(),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => ToDoScreen(
-                                                    buttonName: ButtonType[2],
-                                                  )),
-                                        );
-                                      },
-                                      child: Text(
-                                        _categoryName(3),
-                                        style: _textStyleForToDoPrev(context),
-                                      ))),
-                              Container(
-                                  width:
-                                      MediaQuery.of(context).size.shortestSide /
-                                          2.5,
-                                  height:
-                                      MediaQuery.of(context).size.shortestSide /
-                                          2.5,
-                                  decoration: BoxDecoration(
-                                      color: Colors.blueAccent,
-                                      borderRadius: BorderRadius.circular(25)),
-                                  child: TextButton(
-                                      style: _buttonStyleForToDoPrev(),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => ToDoScreen(
-                                                    buttonName: ButtonType[3],
-                                                  )),
-                                        );
-                                      },
-                                      child: Text(
-                                        _categoryName(4),
-                                        style: _textStyleForToDoPrev(context),
-                                      )))
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                      width:
+                                          MediaQuery.of(context).size.shortestSide /
+                                              2.5,
+                                      height:
+                                          MediaQuery.of(context).size.shortestSide /
+                                              2.5,
+                                      decoration: BoxDecoration(
+                                          color: Colors.deepOrangeAccent,
+                                          borderRadius: BorderRadius.circular(25)),
+                                      child: TextButton(
+                                          style: _buttonStyleForToDoPrev(),
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => ToDoScreen(
+                                                        buttonName: ButtonType[0],
+                                                      )),
+                                            );
+                                          },
+                                          child: Text(
+                                            _categoryName(1),
+                                            style: _textStyleForToDoPrev(context),
+                                          ))),
+                                  Container(
+                                      width:
+                                          MediaQuery.of(context).size.shortestSide /
+                                              2.5,
+                                      height:
+                                          MediaQuery.of(context).size.shortestSide /
+                                              2.5,
+                                      decoration: BoxDecoration(
+                                          color: Colors.yellow,
+                                          borderRadius: BorderRadius.circular(25)),
+                                      child: TextButton(
+                                          style: _buttonStyleForToDoPrev(),
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => ToDoScreen(
+                                                        buttonName: ButtonType[1],
+                                                      )),
+                                            );
+                                          },
+                                          child: Text(
+                                            _categoryName(2),
+                                            style: _textStyleForToDoPrev(context),
+                                          )))
+                                ],
+                              ),
+                              SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.shortestSide / 11,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                      width:
+                                          MediaQuery.of(context).size.shortestSide /
+                                              2.5,
+                                      height:
+                                          MediaQuery.of(context).size.shortestSide /
+                                              2.5,
+                                      decoration: BoxDecoration(
+                                          color: Colors.green,
+                                          borderRadius: BorderRadius.circular(25)),
+                                      child: TextButton(
+                                          style: _buttonStyleForToDoPrev(),
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => ToDoScreen(
+                                                        buttonName: ButtonType[2],
+                                                      )),
+                                            );
+                                          },
+                                          child: Text(
+                                            _categoryName(3),
+                                            style: _textStyleForToDoPrev(context),
+                                          ))),
+                                  Container(
+                                      width:
+                                          MediaQuery.of(context).size.shortestSide /
+                                              2.5,
+                                      height:
+                                          MediaQuery.of(context).size.shortestSide /
+                                              2.5,
+                                      decoration: BoxDecoration(
+                                          color: Colors.blueAccent,
+                                          borderRadius: BorderRadius.circular(25)),
+                                      child: TextButton(
+                                          style: _buttonStyleForToDoPrev(),
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) => ToDoScreen(
+                                                        buttonName: ButtonType[3],
+                                                      )),
+                                            );
+                                          },
+                                          child: Text(
+                                            _categoryName(4),
+                                            style: _textStyleForToDoPrev(context),
+                                          )))
+                                ],
+                              ),
                             ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
