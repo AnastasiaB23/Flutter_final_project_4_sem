@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practice6/screens/to_do_screen.dart';
+import 'package:practice6/views/to_do_screen.dart';
 
 List<String> ButtonType = ['button1', 'button2', 'button3', 'button4'];
 

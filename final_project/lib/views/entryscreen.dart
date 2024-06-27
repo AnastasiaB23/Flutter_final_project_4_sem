@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:practice6/screens/todo_preview_screen.dart';
-import 'package:practice6/screens/weather_screen.dart';
+import 'package:practice6/views/todo_preview_screen.dart';
+import 'package:practice6/views/weather_screen.dart';
 
-import 'goals_screen.dart';
+import '../views/goals_screen.dart';
 
 class EntryScreen extends StatefulWidget {
   const EntryScreen({super.key});

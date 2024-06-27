@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../shared_preferences_service.dart';
+import '../controllers/shared_preferences_service.dart';
 
 class MyGoals extends StatefulWidget {
   MyGoals({super.key});

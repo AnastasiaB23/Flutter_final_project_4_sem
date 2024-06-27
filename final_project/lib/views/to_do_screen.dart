@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:practice6/screens/add_todo_screen.dart';
-import 'package:practice6/shared_preferences_service.dart';
+import 'package:practice6/views/add_todo_screen.dart';
+import 'package:practice6/controllers/shared_preferences_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ToDoScreen extends StatefulWidget {
