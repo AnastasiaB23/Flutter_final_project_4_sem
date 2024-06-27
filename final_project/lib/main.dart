@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practice6/screens/start_screen.dart';
+import 'package:practice6/views/start_screen.dart';
 
 void main() async {
   runApp(MyApp());

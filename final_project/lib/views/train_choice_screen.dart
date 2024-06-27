@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:practice6/screens/train_exercises_screen.dart';
+import 'package:practice6/views/train_exercises_screen.dart';
 
 String URLs(int number) {
   switch (number) {
